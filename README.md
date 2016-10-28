@@ -28,7 +28,7 @@ If not, report where the script failed into a [new GitHub Issue](https://github.
 
 **macOS tools:**
 
-* [XCode](https://developer.apple.com/xcode/downloads/) for 
+* [XCode Command Line Tools](https://developer.apple.com/xcode/downloads/) for developer essentials.
 * [Homebrew](http://brew.sh/) for managing operating system libraries.
 
 **Unix tools:**
