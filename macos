@@ -35,6 +35,10 @@ fi
 
 append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
 
+if [ ! -d "/usr/local" ]; then
+  sudo mkdir /usr/local
+fi
+
 sudo chown -R $(whoami) /usr/local
 
 HOMEBREW_PREFIX="/usr/local"
