@@ -72,6 +72,10 @@ komputer maschine is © 2016 by Lauren Dorman and is protected under the [MIT Li
 
 [MIT License]: LICENSE
 
+## Known Issues
+
+Cask does not recognize applications installed outside of Homebrew Cask – in the case that the script fails, you can either remove the application from the install list or uninstall the application causing the failure and try again.
+
 ## Credits and inspiration
 
 Inspired by thoughtbot's [laptop](https://github.com/thoughtbot/laptop/) and Andrew Taylor's article on [Pantheon](https://pantheon.io/blog/dev-setup-using-homebrew-os-x).
