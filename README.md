@@ -17,13 +17,6 @@ curl --remote-name https://raw.githubusercontent.com/laurendorman/komputer-masch
 sh macos 2>&1 | tee ~/komputer-maschine.log
 ```
 
-## Debugging
-
-The log of your script, successful or not, will be saved to `~/komputer-maschine.log`.
-
-Read through it to see if you can debug the issue yourself.
-If not, report where the script failed into a [new GitHub Issue](https://github.com/laurendorman/komputer-maschine/issues/new).
-
 ## What You Get
 
 **macOS tools:**
@@ -66,15 +59,22 @@ If not, report where the script failed into a [new GitHub Issue](https://github.
 * [Docker](https://www.docker.com/) for buliding, shipping and running applications.
 * [Spotify](https://www.spotify.com/us/) for music.
 
+## Debugging
+
+The log of your script, successful or not, will be saved to `~/komputer-maschine.log`.
+
+Read through it to see if you can debug the issue yourself.
+If not, report where the script failed into a [new GitHub Issue](https://github.com/laurendorman/komputer-maschine/issues/new).
+
+## Known Issues
+
+Cask does not recognize applications installed outside of Homebrew Cask – in the case that the script fails, you can either remove the application from the install list or uninstall the application causing the failure and try again.
+
 ## License
 
 komputer maschine is © 2016 by Lauren Dorman and is protected under the [MIT License].
 
 [MIT License]: LICENSE
-
-## Known Issues
-
-Cask does not recognize applications installed outside of Homebrew Cask – in the case that the script fails, you can either remove the application from the install list or uninstall the application causing the failure and try again.
 
 ## Credits and inspiration
 
