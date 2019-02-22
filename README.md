@@ -1,14 +1,14 @@
 komputer maschine
 ======
 
-komputer maschine is a shell script that gets your machine ready for design and development.
+komputer maschine is a shell script that gets your machine ready for development.
 
 This script can be ran once or as many times as you'd like. It installs everything that macOS needs to get to work.
 
 ## Requirements
 
 * A komputer maschine
-* macOS (>10)
+* macOS (>10.14)
 
 ## Install
 
@@ -49,12 +49,8 @@ sh macos 2>&1 | tee ~/komputer-maschine.log
 * [Google Chrome](https://www.google.com/chrome/) for browsing the web.
 * [Firefox](https://www.mozilla.org/en-US/firefox/new/) for browsing the web also, but mostly for testing. :)
 * [iTerm2](https://www.iterm2.com/) for a better terminal.
-* [Vagrant](https://www.vagrantup.com/) for creating and configuring development environments.
-* [VirtualBox](https://www.virtualbox.org/) for guest operating systems, when needed.
-* [Atom](http://atom.io) as a text editor.
+* [VS Code](https://code.visualstudio.com/) as a text editor.
 * [The Unarchiver](http://unarchiver.c3.cx/unarchiver) for extracting archives that are not supported by macOS out of the box.
-* [Sketch](https://www.sketchapp.com/) for design.
-* [Dash](https://kapeli.com/dash) for browsing documentation and storing code snippets.
 * [Slack](https://slack.com/) for more team communication and less email.
 * [Docker](https://www.docker.com/) for buliding, shipping and running applications.
 * [Spotify](https://www.spotify.com/us/) for music.
@@ -72,7 +68,7 @@ Cask does not recognize applications installed outside of Homebrew Cask – in t
 
 ## License
 
-komputer maschine is © 2016 by Lauren Dorman and is protected under the [MIT License].
+komputer maschine is © 2016-Present by Lauren Dorman and is protected under the [MIT License].
 
 [MIT License]: LICENSE
 
