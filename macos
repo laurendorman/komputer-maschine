@@ -39,8 +39,6 @@ if [ ! -d "/usr/local" ]; then
   sudo mkdir /usr/local
 fi
 
-sudo chown -R $(whoami) /usr/local
-
 HOMEBREW_PREFIX="/usr/local"
 
 if [ -d "$HOMEBREW_PREFIX" ]; then
@@ -127,15 +125,12 @@ fi
 applications=(
   alfred
   caffeine
+  1password
   google-chrome
   firefox
   iterm2
-  vagrant
-  virtualbox
-  atom
+  visual-studio-code
   the-unarchiver
-  sketch
-  dash
   slack
   docker
   spotify
@@ -159,7 +154,6 @@ done
 # Clean up Homebrew files
 komputer_echo "Cleaning up files..."
 brew cleanup
-brew cask cleanup
 
 komputer_echo "Configuring Ruby..."
 
@@ -173,7 +167,7 @@ append_to_zshrc 'eval "$(rbenv init - --no-rehash)"' 1
 eval "$(rbenv init -)"
 
 if ! rbenv versions | grep -Fq "$ruby_version"; then
-  RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/opt/openssl rbenv install -s "$ruby_version"
+  RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/opt/openssl rbenv install -s "$ruby_version";
 fi
 
 rbenv global "$ruby_version"
