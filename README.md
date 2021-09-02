@@ -34,7 +34,7 @@ sh macos 2>&1 | tee ~/komputer-maschine.log
 
 - [nvm (Node Version Manager)](https://github.com/nvm-sh/nvm) and [npm](https://www.npmjs.org/) for running applications and installing JavaScript packages.
 - [Python](https://www.python.org/) for programming in Python.
-- [Go] for programming in Go.
+- [Go](https://golang.org/) for programming in Go.
 
 **Applications:**
 
