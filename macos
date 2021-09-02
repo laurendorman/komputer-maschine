@@ -25,7 +25,7 @@ append_to_zshrc() {
 }
 
 # Let the user know if the script fails
-trap 'ret=$?; test $ret -ne 0 && printf "\nkomputer maschine failed. :(\n\n" >&2; exit $ret' EXIT
+trap 'ret=$?; test $ret -ne 0 && printf "\nkomputer maschine failed. :(\n\nPlease check the log file: ~/komputer-maschine.log\n\n" >&2; exit $ret' EXIT
 
 set -e
 
@@ -94,54 +94,56 @@ fi
 komputer_echo "Installing services..."
 brew bundle --file=- <<EOF
 tap "homebrew/services"
-tap "caskroom/cask"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 
 # Unix
 brew "git"
-brew "reattach-to-user-namespace"
 brew "tmux"
 brew "vim"
 brew "zsh"
 
-# Image manipulation
-brew "imagemagick"
-
 # Programming languages
-brew "rbenv"
-brew "ruby-build"
+brew "python"
+brew "go"
 
 # Tools
 brew "npm"
 EOF
 
-# Check for Node
-if test ! $(brew list | grep node); then
-  komputer_echo 'Installing Node...'
-  brew install node
+# Check for NVM
+if test ! $(brew list | grep nvm); then
+  komputer_echo 'Installing Node Version Manager...'
+  brew install nvm
 else
   komputer_echo 'Node already installed. Skipping...'
 fi
 
 applications=(
+  1password
   alfred
   caffeine
-  1password
-  google-chrome
-  firefox
-  iterm2
-  visual-studio-code
-  the-unarchiver
-  slack
   docker
+  dropbox
+  figma
+  firefox
+  google-chrome
+  iterm2
+  loom
+  notion
+  slack
   spotify
+  the-unarchiver
+  visual-studio-code
+  zoom
 )
 
 komputer_echo "Installing applications..."
 
 install_application() {
-  if test ! $(brew cask list | grep $application); then
+  if test ! $(brew list --cask | grep $application); then
     komputer_echo "Installing $application..."
-    brew cask install --appdir="/Applications" $application
+    brew install --cask --appdir="/Applications" $application
   else
     komputer_echo "$application already installed. Skipping..."
   fi
@@ -154,27 +156,5 @@ done
 # Clean up Homebrew files
 komputer_echo "Cleaning up files..."
 brew cleanup
-
-komputer_echo "Configuring Ruby..."
-
-find_latest_ruby() {
-  rbenv install -l | grep -v - | tail -1 | sed -e 's/^ *//'
-}
-
-ruby_version="$(find_latest_ruby)"
-
-append_to_zshrc 'eval "$(rbenv init - --no-rehash)"' 1
-eval "$(rbenv init -)"
-
-if ! rbenv versions | grep -Fq "$ruby_version"; then
-  RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/opt/openssl rbenv install -s "$ruby_version";
-fi
-
-rbenv global "$ruby_version"
-rbenv shell "$ruby_version"
-sudo gem update --system
-gem_install_or_update 'bundler'
-number_of_cores=$(sysctl -n hw.ncpu)
-bundle config --global jobs $((number_of_cores - 1))
 
 komputer_echo "Congratulations! Your komputer maschine is ready to go."
